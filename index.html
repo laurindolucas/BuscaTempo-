@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="pt-BR"> <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consultor de Clima e CEP</title> <link rel="stylesheet" href="style.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@600&display=swap" rel="stylesheet">
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/3.0.0/uicons-regular-rounded/css/uicons-regular-rounded.css'>
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/3.0.0/uicons-thin-straight/css/uicons-thin-straight.css'>
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/3.0.0/uicons-solid-straight/css/uicons-solid-straight.css'>
+
+</head>
+
+<body>
+
+    <div class="container">
+        <header class="header">
+            <h1 class="titlepage" id="titlepage">Consultor de Clima</h1>
+            <p class="descriptionpage" id="descriptionpage">Descubra o clima da sua localização digitando seu CEP ou sua Cidade</p>
+        </header>
+
+        <main class="main-content">
+            <section class="search-section">
+                <form class="formCep" id="formCep">
+                    <div class="input-group">
+                        <input type="text" class="buscarCep" id="cepInput" placeholder="Digite o CEP (ex: 12345-100)"
+                            maxlength="9">
+                            <input type="text" id="cidadeInput" placeholder="Buscar por cidade">
+
+                        <button type="submit" class="bntBuscarCep" id="searchBtn">
+                            <i class="fas fa-search"></i> Buscar
+                        </button>
+                    </div>
+                </form>
+            </section>
+
+            <div id="loading" class="loading hidden">
+                <i class="fas fa-spinner fa-spin"></i> <p>Buscando informações...</p>
+            </div>
+
+            <div id="error-message" class="error-message hidden">
+                <i class="fas fa-exclamation-triangle"></i> <p id="error-text"></p>
+            </div>
+
+            <section id="results" class="results hidden">
+
+                <div class="containerInfoCep" id="containerInfoCep">
+                    <h2 class="infoCepTitle"> <i class="fas fa-map-marker-alt"></i> Localização</h2> <div class="infosLocalizacao" id="infosLocalizacao">
+                        <div class="divResultado">
+                            <h3 class="cepLocalizacao" id="cepLocalizacao">CEP: </h3>
+                        </div>
+                        <div class="divResultado">
+                            <h3 class="logradouroLocalizacao" id="logradouroLocalizacao">Logradouro: </h3>
+                        </div>
+                        <div class="divResultado">
+                            <h3 class="bairroLocalizacao" id="bairroLocalizacao">Bairro: </h3>
+                        </div>
+                        <div class="divResultado">
+                            <h3 class="cidadeLocalizacao" id="cidadeLocalizacao">Cidade: </h3>
+                        </div>
+                        <div class="divResultado">
+                            <h3 class="estadoLocalizacao" id="estadoLocalizacao">Estado: </h3>
+                        </div>
+                    </div>
+                    <button type="button" class="btn-favorito" id="favoriteBtn">
+                        <i class="far fa-heart"></i> Adicionar aos Favoritos
+                    </button>
+                </div>
+
+                <div class="containerclima" id="contanerclima">
+                    <h2 class="climaTitle"><i class="fas fa-cloud-sun"></i> Clima Atual</h2> <img id="weather-icon" alt="Ícone do Clima" class="weather-icon">
+
+                    <h3 class="titletemperatura" id="temperature"></h3>
+                    <p class="descricaotemperatura" id="weatherDescription"></p>
+
+                    <div class="dadosclima" id="dadosclima">
+                        <div class="divresultadoclima">
+                            <span class="icon"><i class="fas fa-thermometer-half"></i></span> <h4 class="titledadosclima">Sensação</h4>
+                            <span id="feelsLike"></span> </div>
+                        <div class="divresultadoclima">
+                            <span class="icon"><i class="fas fa-tint"></i></span> <h4 class="titledadosclima">Umidade</h4>
+                            <span id="humidity"></span> </div>
+                        <div class="divresultadoclima">
+                            <span class="icon"><i class="fas fa-wind"></i></span> <h4 class="titledadosclima">Vento</h4>
+                            <span id="windSpeed"></span> </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="history-section">
+                <h2><i class="fas fa-history"></i> Histórico de Consultas</h2> <div id="history-list" class="history-list">
+                    <p class="empty-message">Nenhuma consulta realizada ainda</p>
+                </div>
+                <button id="clearHistoryBtn" class="clear-btn hidden">
+                    <i class="fas fa-trash-alt"></i> Limpar Histórico
+                </button>
+            </section>
+
+            <section class="favorites-section">
+                <h2><i class="fas fa-star"></i> Locais Favoritos</h2> <div id="favorites-list" class="favorites-list">
+                    <p class="empty-message">Nenhum local favoritado ainda</p>
+                </div>
+                <button id="clearFavoritesBtn" class="clear-btn hidden">
+                    <i class="fas fa-trash-alt"></i> Limpar Favoritos
+                </button>
+            </section>
+        </main>
+    </div>
+    <script src="scripts.js"></script>
+</body>
+</html>

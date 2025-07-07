@@ -1,0 +1,461 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #4e66ff 25%, #1313d3 100%) no-repeat;
+    font-family: "Lexend Deca", sans-serif;
+    font-weight: 600;
+    font-style: normal;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.header {
+    text-align: center;
+    color: white;
+    margin-top: 30px;
+}
+
+.header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.header p {
+    font-size: 1.1rem;
+    opacity: 0.9;
+}
+
+.main-content {
+    display: grid;
+    gap: 30px;
+}
+
+.search-section {
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+}
+
+.input-group {
+    display: flex;
+    gap: 15px;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+#cidadeInput{
+    flex: 1;
+    padding: 15px 20px;
+    border: 2px solid #e1e5e9;
+    border-radius: 10px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+}
+#cidadeInput:focus {
+    outline: none;
+    border-color: #3e62ff;
+}
+
+
+.containerBusca {
+    margin-top: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 1200px; 
+    height: 100px;
+    background-color: rgb(255, 255, 255);
+    border-radius: 10px;
+    gap: 10px;
+}
+
+.buscarCep {
+    flex: 1;
+    padding: 15px 20px;
+    border: 2px solid #e1e5e9;
+    border-radius: 10px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+}
+
+.buscarCep:focus {
+    outline: none;
+    border-color: #3e62ff;
+}
+
+.bntBuscarCep {
+    padding: 15px 25px;
+    background: linear-gradient(135deg, #3459ff 0%, #46b0fc 100%);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.bntBuscarCep:hover {
+    transform: translateY(-2px);
+}
+
+.bntBuscarCep:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.loading {
+    text-align: center;
+    padding: 40px;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.loading i {
+    font-size: 2rem;
+    color: #667eea;
+    margin-bottom: 15px;
+}
+
+.error-message {
+    background: #fee;
+    border: 2px solid #fcc;
+    color: #c33;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.error-message i {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+.results {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.informacoes {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.containerInfoCep,
+.containerclima { 
+    background-color: rgb(255, 255, 255);
+    border-radius: 20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 20px; 
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); 
+}
+
+.containerInfoCep {
+
+}
+
+.infoCepTitle,
+.climaTitle { 
+    color: #4763ff;
+    margin: 0 0 20px 0; 
+    font-size: 30px;
+    text-align: center;
+}
+
+.divResultado {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    margin-bottom: 15px; 
+    margin: 35px;
+
+}
+
+.btn-favorito {
+    width: 100%;
+    padding: 12px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-top: 15px;
+    transition: background 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.btn-favorito:hover {
+    background: rgb(4, 156, 32);
+}
+
+.btn-favorito.favorited {
+    background: linear-gradient(135deg, #dc3545 0%, #a23333 100%); 
+}
+
+.btn-favorito.favorited:hover {
+    background: #c82333;
+}
+
+
+.containerclima {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center; 
+}
+
+#weather-icon { 
+    width: 100px; 
+    object-fit: contain;
+    margin-bottom: 10px;
+}
+
+.titletemperatura {
+    font-size: 70px;
+    color: #4763ff;
+    margin-bottom: 10px;
+}
+
+.descricaotemperatura {
+    font-size: 1.5rem;
+    color: #555;
+    margin-bottom: 20px;
+    text-transform: capitalize; 
+}
+
+
+.dadosclima {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    gap: 50px; 
+    margin-top: 30px; 
+    flex-wrap: wrap; 
+}
+
+.divresultadoclima {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px; 
+}
+
+.icon {
+    font-size: 35px;
+    color: #4763ff;
+    margin-bottom: 5px;
+}
+
+.titledadosclima {
+    font-size: 25px;
+    color: #333;
+}
+
+.history-section,
+.favorites-section {
+    background: white;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.history-section h2,
+.favorites-section h2 {
+    color: #667eea;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.history-list,
+.favorites-list {
+    display: grid;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.history-item,
+.favorite-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    background: #f8f9fa;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.history-item:hover,
+.favorite-item:hover {
+    background: #e9ecef;
+}
+
+.item-info {
+    flex: 1;
+}
+
+.item-info strong {
+    color: #667eea;
+}
+
+.item-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.item-actions button {
+    background: none;
+    border: none;
+    color: #666;
+    cursor: pointer;
+    padding: 5px;
+    border-radius: 5px;
+    transition: color 0.3s ease;
+}
+
+.item-actions button:hover {
+    color: #dc3545; 
+}
+
+.clear-btn {
+    width: 100%;
+    padding: 12px;
+    background: #dc3545;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition: background 0.3s ease;
+}
+
+.clear-btn:hover {
+    background: #c82333;
+}
+
+.empty-message {
+    text-align: center;
+    color: #666;
+    font-style: italic;
+    padding: 20px;
+}
+
+.hidden {
+    display: none !important;
+}
+
+
+@media (max-width: 768px) {
+    .container {
+        padding: 15px;
+    }
+
+    .header h1 {
+        font-size: 2rem;
+    }
+
+    .input-group {
+        flex-direction: column;
+    }
+
+
+    .containerBusca {
+        width: 100%; 
+        flex-direction: column;
+        height: auto;
+        padding: 20px;
+    }
+    .buscarCep {
+        width: 100%;
+    }
+    .bntBuscarCep {
+        width: 100%;
+    }
+
+    .informacoes {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .dadosclima {
+        flex-direction: column; 
+        gap: 20px;
+    }
+
+    .results {
+        grid-template-columns: 1fr;
+    }
+
+    .history-item,
+    .favorite-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    .item-actions {
+        align-self: flex-end;
+    }
+}
+
+@media (max-width: 480px) {
+    .search-section {
+        padding: 20px;
+    }
+
+    .containerInfoCep,
+    .containerclima {
+        padding: 15px;
+    }
+
+    .infoCepTitle,
+    .climaTitle {
+        font-size: 25px;
+    }
+
+    .titletemperatura {
+        font-size: 50px;
+    }
+
+    .descricaotemperatura {
+        font-size: 1.2rem;
+    }
+
+    .titledadosclima {
+        font-size: 20px;
+    }
+
+    .history-item,
+    .favorite-item {
+        padding: 10px;
+    }
+}
