@@ -138,7 +138,7 @@ async function fetchLocationData(cep) {
 
 async function fetchCoordinates(city, state) {
     const query = `${city},${state},BR`;
-    const url = `http://api.openweathermap.org/geo/1.0/direct?q=${query}&limit=1&appid=${WEATHER_API_KEY}`;
+    const url = `https://api.openweathermap.org/geo/1.0/direct?q=${query}&limit=1&appid=${WEATHER_API_KEY}`;
 
     const response = await fetch(url);
     if (!response.ok) {
